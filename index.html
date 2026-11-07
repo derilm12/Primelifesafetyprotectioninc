@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME LIFE SAFETY PROTECTION INC.</title>
+    <style>
+        /* -------------------------------------------------
+           Design Tokens
+        ------------------------------------------------- */
+        :root {
+            --color-darkred: #8B0000;
+            --color-navy:   #001f3f;
+            --color-charcoal: #212121;
+            --color-white:  #ffffff;
+            --color-gray:   #f5f5f5;
+            --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* -------------------------------------------------
+           Global Styles
+        ------------------------------------------------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            background-color: var(--color-charcoal);
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            font: inherit;
+        }
+
+        /* -------------------------------------------------
+           Header & Top Banner
+        ------------------------------------------------- */
+        .top-banner {
+            background: var(--color-darkred);
+            color: var(--color-white);
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .top-banner span {
+            font-weight: bold;
+        }
+
+        header {
+            background: var(--color-navy);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-white);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--color-white);
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* -------------------------------------------------
+           Hero Section
+        ------------------------------------------------- */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb1c9a8d0a2?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: var(--color-white);
+            text-align: center;
+            padding: 6rem 1rem;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero .cta button {
+            background: var(--color-darkred);
+            color: var(--color-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .hero .cta button:hover {
+            background: #a50000;
+        }
+
+        /* -------------------------------------------------
+           Services Grid
+        ------------------------------------------------- */
+        .services {
+            background: var(--color-gray);
+            color: var(--color-charcoal);
+            padding: 4rem 1rem;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-darkred);
+            font-size: 2rem;
+        }
+
+        .service-grid {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .service-card {
+            background: var(--color-white);
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .service-card h3 {
+            color: var(--color-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        /* -------------------------------------------------
+           Compliance & Service Area
+        ------------------------------------------------- */
+        .compliance {
+            background: var(--color-darkred);
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        .compliance h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .compliance ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1rem;
+        }
+
+        .compliance li {
+            background: var(--color-navy);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        /* -------------------------------------------------
+           Contact & Quote Form
+        ------------------------------------------------- */
+        .contact {
+            background: var(--color-charcoal);
+            padding: 4rem 1rem;
+            color: var(--color-white);
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-white);
+            font-size: 2rem;
+        }
+
+        .contact form {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact input,
+        .contact select,
+        .contact textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background: #333;
+            color: var(--color-white);
+        }
+
+        .contact button {
+            background: var(--color-navy);
+            color: var(--color-white);
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .contact button:hover {
+            background: #003366;
+        }
+
+        /* -------------------------------------------------
+           Footer
+        ------------------------------------------------- */
+        footer {
+            background: var(--color-navy);
+            color: var(--color-gray);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* -------------------------------------------------
+           Responsive Tweaks
+        ------------------------------------------------- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero .cta {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <span>24/7 Emergency Service: <a href="tel:18005551234" style="color:#fff;">1-800-555-1234</a></span>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">PRIME LIFE SAFETY PROTECTION INC.</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#area">Service Area</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Protecting GTA Commercial & Residential Buildings Since 1953</h1>
+            <p>Expert fire protection solutions you can trust.</p>
+            <div class="cta">
+                <button id="btn-inspection">Request Inspection</button>
+                <button id="btn-emergency">Emergency Dispatch</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Grid -->
+    <section class="services" id="services">
+        <h2>Our Core Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Fire Alarm Systems</h3>
+                <p>Design, install & maintain reliable fire alarm solutions.</p>
+            </div>
+            <div class="service-card">
+                <h3>Sprinkler & Standpipe Systems</h3>
+                <p>Comprehensive sprinkler and standpipe installation & testing.</p>
+            </div>
+            <div class="service-card">
+                <h3>Emergency Lighting</h3>
+                <p>Ensure safe egress with compliant emergency lighting.</p>
+            </div>
+            <div class="service-card">
+                <h3>Fire Extinguishers & Hoses</h3>
+                <p>Supply, install and service extinguishers and fire hoses.</p>
+            </div>
+            <div class="service-card">
+                <h3>Kitchen Hood Suppression</h3>
+                <p>Specialized suppression systems for commercial kitchens.</p>
+            </div>
+            <div class="service-card">
+                <h3>ULC Monitoring</h3>
+                <p>Continuous monitoring services meeting ULC standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance & Service Area -->
+    <section class="compliance" id="area">
+        <h3>Service Areas & Code Compliance</h3>
+        <ul>
+            <li>Toronto</li>
+            <li>Peel</li>
+            <li>York</li>
+            <li>Halton</li>
+            <li>Durham</li>
+        </ul>
+        <p style="margin-top:1rem;">All work adheres to NFPA standards and local fire codes.</p>
+    </section>
+
+    <!-- Contact & Quote Form -->
+    <section class="contact" id="contact">
+        <h2>Request a Quote / Service</h2>
+        <form id="quoteForm">
+            <div>
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div>
+                <label for="service">Service Type *</label>
+                <select id="service" name="service" required>
+                    <option value="">Select...</option>
+                    <option>Annual Inspection</option>
+                    <option>Service Call</option>
+                    <option>New Installation Quote</option>
+                </select>
+            </div>
+            <div>
+                <label for="details">Additional Details</label>
+                <textarea id="details" name="details" rows="4"></textarea>
+            </div>
+            <button type="submit">Submit Request</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 PRIME LIFE SAFETY PROTECTION INC. | <a href="mailto:info@primelifesafety.ca" style="color:#fff;">info@primelifesafety.ca</a>
+    </footer>
+
+    <script>
+        // Simple client‑side form handling (demo purposes only)
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                name: this.name.value.trim(),
+                email: this.email.value.trim(),
+                phone: this.phone.value.trim(),
+                service: this.service.value,
+                details: this.details.value.trim()
+            };
+            // Basic validation
+            if (!data.name || !data.email || !data.phone || !data.service) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            console.log('Form submitted:', data);
+            alert('Thank you! Your request has been received.');
+            this.reset();
+        });
+
+        // CTA button actions (placeholder)
+        document.getElementById('btn-inspection').addEventListener('click', () => {
+            document.getElementById('service').value = 'Annual Inspection';
+            document.getElementById('name').focus();
+        });
+
+        document.getElementById('btn-emergency').addEventListener('click', () => {
+            window.location.href = 'tel:18005551234';
+        });
+    </script>
+</body>
+</html>
